@@ -6,7 +6,7 @@
   --max-content-width: 1200px;
 }
 
-/* Global Resets & Typography */
+/* Global resets and base styles */
 *, *:before, *:after { box-sizing: border-box; }
 body {
   background: #f8f8f8;
@@ -18,20 +18,19 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 
-/* Main container - aligns exactly under navbar with red border */
+/* Main container */
 .main-container {
   max-width: var(--max-content-width);
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   background: #fff;
   border: 4px solid var(--ocbc-red);
-  border-top: none;
-  border-radius: 0 0 14px 14px;
+  border-radius: 16px;
   min-height: 100vh;
   position: relative;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* Header / nav bar */
 .container-header {
   max-width: var(--max-content-width);
   margin: 0 auto;
@@ -45,6 +44,7 @@ img { max-width: 100%; height: auto; display: block; }
   top: 0;
   z-index: 10000;
 }
+
 header img.logo {
   height: 44px;
   max-width: 200px;
@@ -53,9 +53,11 @@ header img.logo {
   object-fit: contain;
   vertical-align: middle;
 }
+
 nav#primary-nav ul {
   list-style: none;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
@@ -86,7 +88,15 @@ nav#primary-nav ul li a:hover, nav#primary-nav ul li a:focus {
   user-select: none;
 }
 
-/* Welcome Section and Floating Login */
+/* Container inner for consistent padding/alignment */
+.container-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px 32px 32px;
+  position: relative;
+}
+
+/* Welcome Section */
 .welcome-section {
   display: flex;
   flex-wrap: wrap;
@@ -103,11 +113,12 @@ nav#primary-nav ul li a:hover, nav#primary-nav ul li a:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-left: 36px; /* Moves text a bit off the left border */
 }
 .main-welcome {
   font-size: 2.15rem;
   font-weight: 700;
-  color: var(--ocbc-red);
+  color: #d52b1e;
   margin-bottom: 13px;
   line-height: 1.16;
 }
@@ -311,6 +322,7 @@ footer {
   .floating-login { top: 0; margin-top: 24px; }
 }
 @media (max-width: 650px) {
+  .container-inner { padding: 0 10px }
   .main-container { border-width: 0;}
   .contact-row { padding: 18px 2vw;}
   .contact-method { padding: 9px 6px;}
