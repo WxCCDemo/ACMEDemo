@@ -9,7 +9,7 @@
 /* Global Resets and Typography */
 *, *:before, *:after { box-sizing: border-box; }
 body {
-  background: #d52b1e;
+  background: #f8f8f8;
   margin: 0;
   font-family: var(--ocbc-font);
   color: #222;
