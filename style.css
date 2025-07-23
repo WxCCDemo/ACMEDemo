@@ -50,7 +50,8 @@ header img.logo {
 /* Navigation */
 nav#primary-nav ul {
   list-style: none;
-  margin: 0; padding: 0;
+  margin: 0; 
+  padding: 0;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
@@ -119,6 +120,7 @@ section {
 }
 .products-grid {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: stretch; /* Align product cards height */
 }
 
 /* Product Cards */
@@ -130,6 +132,7 @@ section {
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.25s ease;
+  height: 100%;
 }
 .product-card:hover,
 .product-card:focus-within {
@@ -139,6 +142,7 @@ section {
 .product-card img {
   height: 160px;
   object-fit: cover;
+  width: 100%;
   border-bottom: 1px solid #ddd;
 }
 .product-card .content {
@@ -162,9 +166,10 @@ section {
 }
 .contact-details td img {
   height: 32px;
-  vertical-align: middle;
+  width: 32px;
+  object-fit: contain;
   margin-right: 12px;
-  filter: none;
+  vertical-align: middle;
 }
 
 /* Footer Styling */
@@ -247,7 +252,7 @@ footer {
 
 /* Responsive Styles */
 
-/* Smartphones (portrait and landscape) */
+/* Smartphones and small devices */
 @media (max-width: 767px) {
 
   nav#primary-nav {
@@ -282,7 +287,7 @@ footer {
   }
 }
 
-/* Tablets and up: main nav horizontal */
+/* Tablets and larger devices */
 @media (min-width: 768px) {
   nav#primary-nav {
     position: static;
