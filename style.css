@@ -6,7 +6,7 @@
   --max-content-width: 1200px;
 }
 
-/* Global Resets and Typography */
+/* Global Resets & Typography */
 *, *:before, *:after { box-sizing: border-box; }
 body {
   background: #f8f8f8;
@@ -18,10 +18,10 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 
-/* Main Content Container Alignment & Border */
+/* Main container - aligns exactly under navbar with red border */
 .main-container {
   max-width: var(--max-content-width);
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
   background: #fff;
   border: 4px solid var(--ocbc-red);
   border-top: none;
@@ -31,7 +31,7 @@ img { max-width: 100%; height: auto; display: block; }
   box-sizing: border-box;
 }
 
-/* Header & Navigation Bar */
+/* Header / nav bar */
 .container-header {
   max-width: var(--max-content-width);
   margin: 0 auto;
@@ -71,8 +71,7 @@ nav#primary-nav ul li a {
   white-space: nowrap;
   transition: background-color 0.3s;
 }
-nav#primary-nav ul li a:hover,
-nav#primary-nav ul li a:focus {
+nav#primary-nav ul li a:hover, nav#primary-nav ul li a:focus {
   background-color: var(--ocbc-dark-red);
   border-radius: 4px;
 }
@@ -108,7 +107,7 @@ nav#primary-nav ul li a:focus {
 .main-welcome {
   font-size: 2.15rem;
   font-weight: 700;
-  color: #d52b1e;
+  color: var(--ocbc-red);
   margin-bottom: 13px;
   line-height: 1.16;
 }
@@ -119,14 +118,6 @@ nav#primary-nav ul li a:focus {
   margin-bottom: 15px;
   font-weight: 400;
   line-height: 1.48;
-}
-.welcome-icon {
-  width: 58px;
-  height: 58px;
-  margin-top: 18px;
-  border-radius: 10px;
-  box-shadow: 0 3px 12px #0001;
-  object-fit: contain;
 }
 .welcome-right {
   flex: 1 1 395px;
@@ -147,8 +138,20 @@ nav#primary-nav ul li a:focus {
   display: flex;
   align-items: flex-start;
 }
+@media (max-width: 1060px) {
+  .main-container { border-right-width: 0; border-left-width: 0; }
+}
+@media (max-width: 980px) {
+  .welcome-section { flex-direction: column; }
+  .welcome-right { width: 100%; justify-content: flex-start; }
+  .floating-login { top: 0; margin-top: 24px; }
+}
+@media (max-width: 600px) {
+  .main-container { border-right-width: 0; border-left-width: 0; border-radius: 0;}
+  .welcome-section { gap: 12px;}
+}
 
-/* Login Box */
+/* Login form styles */
 .login-box {
   width: 100%;
   border: none;
@@ -196,7 +199,7 @@ nav#primary-nav ul li a:focus {
 }
 .security-note { font-size: 12px; margin-top: 10px; color: #555; }
 
-/* Product Rows (Personal Banking & Loans) */
+/* Products: Personal Banking & Loans */
 .products-row {
   display: flex;
   gap: 32px;
@@ -277,7 +280,7 @@ nav#primary-nav ul li a:focus {
 }
 .method-label {
   font-weight: 700;
-  color: #d52b1e;
+  color: var(--ocbc-red);
   margin-bottom: 3px;
   font-size: 1.06em;
 }
@@ -298,7 +301,7 @@ footer {
   user-select: none;
 }
 
-/* Responsiveness */
+/* Responsive Adjustments */
 @media (max-width: 1060px) {
   .main-container { border-right-width: 0; border-left-width: 0; }
 }
@@ -316,5 +319,4 @@ footer {
 @media (max-width: 600px) {
   .main-container { border-right-width: 0; border-left-width: 0; border-radius: 0;}
   .welcome-section { gap: 12px;}
-  .welcome-icon { width: 44px; height: 44px;}
 }
