@@ -60,12 +60,10 @@ if (liveChatContainer) {
 // Navigation toggle for small screens:
 const navToggle = document.getElementById('nav-toggle');
 const nav = document.getElementById('primary-nav');
-
 if(navToggle && nav){
   navToggle.addEventListener('click', () => {
     nav.classList.toggle('open');
   });
-  // Close nav when clicking a nav link (optional)
   nav.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       nav.classList.remove('open');
