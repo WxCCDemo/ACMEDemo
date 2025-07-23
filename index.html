@@ -27,43 +27,132 @@
 </header>
 
 <div class="main-container">
-<main>
-  <section class="welcome-section" id="home">
-    <div class="welcome-left">
-      <h1 class="main-welcome">Welcome to OCBC Bank Singapore</h1>
-      <p class="welcome-desc">
-        Your trusted financial partner with comprehensive and innovative banking solutions tailored just for you.
-      </p>
-      <!-- Correct raw GitHub logo (small, visible) -->
-    </div>
-    <div class="welcome-right floating-login">
-      <form class="login-box" aria-labelledby="internetBankingLogin" onsubmit="return false;">
-        <h2 class="login-title">Internet Banking Login</h2>
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" autocomplete="username" required />
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" autocomplete="current-password" required />
-        <button type="submit" aria-label="Login to Internet Banking">Login</button>
-        <div class="link-row">
-          <a href="#">Forgot Password?</a>
-          <a href="#">Register</a>
-        </div>
-        <p class="security-note">
-          Please ensure you are on the official OCBC website to keep your account secure.
+  <main>
+    <!-- Welcome Section -->
+    <section class="welcome-section" id="home">
+      <div class="welcome-left">
+        <h1 class="main-welcome">Welcome to OCBC Bank Singapore</h1>
+        <p class="welcome-desc">
+          Your trusted financial partner with comprehensive and innovative banking solutions tailored just for you.
         </p>
-      </form>
-    </div>
-  </section>
+      </div>
+      <div class="welcome-right floating-login">
+        <form class="login-box" aria-labelledby="internetBankingLogin" onsubmit="return false;">
+          <h2 class="login-title">Internet Banking Login</h2>
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" autocomplete="username" required />
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" required />
+          <button type="submit" aria-label="Login to Internet Banking">Login</button>
+          <div class="link-row">
+            <a href="#">Forgot Password?</a>
+            <a href="#">Register</a>
+          </div>
+          <p class="security-note">
+            Please ensure you are on the official OCBC website to keep your account secure.
+          </p>
+        </form>
+      </div>
+    </section>
 
-  <!-- ... Personal Banking, Loans, Contact Us ... (unchanged from earlier; include your previous content for these sections) -->
+    <!-- Personal Banking -->
+    <section id="personal-banking">
+      <h2>Personal Banking</h2>
+      <div class="products-row">
+        <div class="product-card">
+          <img src="https://raw.githubusercontent.com/WxCCDemo/OCBC-Demo/main/Singapore%20Bank%20Branch%20Interior.jpg" alt="Bank Accounts" />
+          <h3>Bank Accounts</h3>
+          <p>Savings, Current & Foreign Currency Accounts for your daily needs.</p>
+        </div>
+        <div class="product-card">
+          <img src="https://raw.githubusercontent.com/WxCCDemo/OCBC-Demo/main/OCBC%20Credit%20Card%20product%20Shot.jpeg" alt="Credit Cards" />
+          <h3>Credit Cards</h3>
+          <p>Cashback, rewards and miles—find the card that suits you.</p>
+        </div>
+        <div class="product-card">
+          <img src="https://raw.githubusercontent.com/WxCCDemo/OCBC-Demo/main/OCBC%20Person%20using%20banking%20app.jpeg" alt="Deposits" />
+          <h3>Deposits</h3>
+          <p>Fixed and recurring deposits with competitive rates and flexible terms.</p>
+        </div>
+        <div class="product-card">
+          <img src="https://raw.githubusercontent.com/WxCCDemo/OCBC-Demo/main/singapore-financial-planners-talking-with-client.jpg" alt="Investments" />
+          <h3>Investments</h3>
+          <p>Grow your wealth with unit trusts, funds, stocks, and retirement planning.</p>
+        </div>
+      </div>
+    </section>
 
-</main>
+    <!-- Loans -->
+    <section id="loans">
+      <h2>Loans</h2>
+      <div class="products-row">
+        <div class="product-card">
+          <img src="https://raw.githubusercontent.com/WxCCDemo/OCBC-Demo/main/Business%20Team%20in%20Singapore.jpeg" alt="Personal Loans" />
+          <h3>Personal Loans</h3>
+          <p>Flexible personal financing—quick approval and attractive rates.</p>
+        </div>
+        <div class="product-card">
+          <img src="https://raw.githubusercontent.com/WxCCDemo/OCBC-Demo/main/Singapore%20Bank%20Branch%20Interior.jpg" alt="Home Loans" />
+          <h3>Home Loans</h3>
+          <p>Competitive mortgages and refinancing options for your future home.</p>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Car Loans" />
+          <h3>Car Loans</h3>
+          <p>Finance your dream car with low rates and easy repayment plans.</p>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80" alt="Education Loans" />
+          <h3>Education Loans</h3>
+          <p>Fund your studies with hassle-free student loans and flexible repayments.</p>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <p>Privacy Policy | Terms of Use | Disclaimer</p>
-  <p>&copy; 2025 OCBC Bank Singapore – All rights reserved</p>
-</footer>
+    <!-- Contact Us -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-row">
+        <div class="contact-method">
+          <img src="https://raw.githubusercontent.com/WxCCDemo/OCBC-Demo/main/contact-us-phone.jpeg" alt="Phone Icon" />
+          <div>
+            <div class="method-label">Phone Banking</div>
+            <a href="tel:+16692856683">+1 669 285 6683</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <img src="https://raw.githubusercontent.com/WxCCDemo/OCBC-Demo/main/contact-us-whatsapp.jpeg" alt="WhatsApp Icon" />
+          <div>
+            <div class="method-label">WhatsApp Banking</div>
+            <a href="https://wa.me/12014094242" target="_blank" rel="noopener">+1 201 409 4242</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <img src="https://raw.githubusercontent.com/WxCCDemo/OCBC-Demo/main/contact-us-email.jpg" alt="Email Icon" />
+          <div>
+            <div class="method-label">Email Banking</div>
+            <a href="mailto:scbankcare@gmail.com">scbankcare@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <img src="https://raw.githubusercontent.com/WxCCDemo/OCBC-Demo/main/Contact-Us-Address.png" alt="Address Icon" />
+          <div>
+            <div class="method-label">Office Address</div>
+            <div>65 Chulia Street, Singapore 049513</div>
+          </div>
+        </div>
+      </div>
+      <div aria-label="Live Chat Widget" role="complementary" id="live-chat-container"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Privacy Policy | Terms of Use | Disclaimer</p>
+    <p>&copy; 2025 OCBC Bank Singapore – All rights reserved</p>
+  </footer>
 </div>
+
 <script src="script.js"></script>
+
 </body>
 </html>
