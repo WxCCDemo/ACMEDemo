@@ -1,72 +1,319 @@
-// Live Chat Widget Initialization
-const liveChatContainer = document.getElementById('live-chat-container');
-if (liveChatContainer) {
-  const divicw = document.createElement('div');
-  divicw.id = 'divicw';
-  divicw.setAttribute('data-bind', '3FBA03BF-7CDC-4DBE-97E8-F581949FC34C');
-  divicw.setAttribute('data-org', '');
-  liveChatContainer.appendChild(divicw);
-
-  var i = {
-    t: function (t) {
-      var e = "https://media.imi.chat/widget/js/imichatinit.js";
-      try {
-        var o = new XMLHttpRequest();
-        o.onreadystatechange = function () {
-          if (this.readyState == 4) {
-            var t = document.getElementById("divicw");
-            if (this.status == 0) {
-              i.o(t);
-              return;
-            }
-            var e = document.createElement("script");
-            e.innerHTML = this.responseText;
-            t.parentNode.insertBefore(e, t.nextSibling);
-          }
-        };
-        o.open("GET", e, true);
-        o.send();
-      } catch (s) {
-        console.error(s);
-      }
-    },
-    o: function (t) {
-      t.insertAdjacentHTML(
-        "afterend",
-        '<iframe id="tls_al_frm" frameborder="0" style="overflow: hidden;height: 208px;width: 394px;position: fixed;display: block;right: 48px;bottom: 12px;z-index: 99999; display:none;"></iframe>'
-      );
-      var e = document.getElementById("tls_al_frm");
-      var o = e.contentWindow || (e.contentDocument.document || e.contentDocument);
-      o.document.open();
-      o.document.write(
-        '<!doctype html><html><head><meta charset="utf-8"><title>Untitled Document</title><style>body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;color: #99a0b0;font-size: 14px;}.popover__content{background-color: #fbfbfe; padding: 1.5rem; border-radius: 5px; width: 300px; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);position: relative;}.popover__message{font-weight: 600;color:#56627c;font-size: 16px;}.pull-left{float:left;}.clearfix{clear: both;}.hdr-txt{width: 218px; margin-top: 3px;}.para-txt a{text-decoration: none;color: #005cde;}.close-btn{position: absolute;right:15px;top:15px;}.close-btn a{text-decoration: none;font-weight: 400; color: #56627c; font-size: 16px;}</style></head><body><div class="popover__content"><div class="close-btn"><a href="#" onclick="closeTLSAlert();">X</a></div><div class="popover__message"><div class="pull-left hdr-txt">This browser version is not supported on LiveChat.</div></div><div class="clearfix"></div><p class="para-txt">Please update your browser to the latest version and re-open the website to access the widget. </p></div><script>function closeTLSAlert(){window.parent.postMessage({key: "close_tls_alert",value: "close_tls_alert",action: "close_tls_alert"}, "*");}<\/script></body></html>'
-      );
-      o.document.close();
-      e.style.display = "block";
-      window.addEventListener("message", function (t) {
-        if (t.data.action == "close_tls_alert") {
-          i.s();
-        }
-      });
-    },
-    s: function () {
-      var t = document.getElementById("tls_al_frm");
-      if (t) t.remove();
-    }
-  };
-  i.t(function (t) {});
+:root {
+  --ocbc-red: #d52b1e;
+  --ocbc-dark-red: #a71c16;
+  --ocbc-light-gray: #f8f8f8;
+  --ocbc-gray: #666;
+  --ocbc-font: 'Open Sans', Arial, sans-serif;
+  --max-content-width: 1200px;
 }
 
-// Navigation toggle for small screens:
-const navToggle = document.getElementById('nav-toggle');
-const nav = document.getElementById('primary-nav');
-if(navToggle && nav){
-  navToggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
-  });
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      nav.classList.remove('open');
-    });
-  });
+/* General resets and typography */
+*, *:before, *:after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--ocbc-font);
+  background: var(--ocbc-light-gray);
+  color: #222;
+  font-size: 16px;
+  line-height: 1.5;
 }
+img { max-width: 100%; height: auto; display: block; }
+
+/* Main content alignment & border */
+.main-container {
+  max-width: var(--max-content-width);
+  margin: 0 auto 0 auto;
+  background: #fff;
+  border: 4px solid var(--ocbc-red);
+  border-top: none;
+  box-sizing: border-box;
+  border-radius: 0 0 14px 14px;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Header/Nav */
+.container-header {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  justify-content: space-between;
+  background-color: var(--ocbc-red);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  box-sizing: border-box;
+}
+header img.logo {
+  height: 44px;
+  max-width: 200px;
+  margin: 0 18px 0 0;
+  display: block;
+  object-fit: contain;
+  vertical-align: middle;
+}
+nav#primary-nav ul {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+nav#primary-nav ul li { display: list-item; }
+nav#primary-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 12px;
+  display: block;
+  white-space: nowrap;
+  transition: background-color 0.3s;
+}
+nav#primary-nav ul li a:hover, nav#primary-nav ul li a:focus {
+  background-color: var(--ocbc-dark-red);
+  border-radius: 4px;
+}
+#nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+  padding: 5px 10px;
+  user-select: none;
+}
+
+/* Welcome Section with floating login and icon */
+.welcome-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 56px;
+  margin: 42px 0 56px 0;
+  min-height: 280px;
+  position: relative;
+  z-index: 1;
+}
+.welcome-left {
+  flex: 2 1 340px;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.main-welcome {
+  font-size: 2.15rem;
+  font-weight: 700;
+  color: #d52b1e;
+  margin-bottom: 13px;
+  line-height: 1.16;
+}
+.welcome-desc {
+  font-size: 1.19rem;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 400;
+  line-height: 1.48;
+}
+.welcome-icon {
+  width: 58px;
+  height: 58px;
+  margin-top: 18px;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px #0001;
+}
+.welcome-right {
+  flex: 1 1 395px;
+  min-width: 300px;
+  display: flex;
+  justify-content: flex-end;
+}
+.floating-login {
+  position: relative;
+  top: 38px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 7px 32px rgba(213,43,30,0.12);
+  padding: 0;
+  min-width: 320px;
+  max-width: 390px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+}
+@media (max-width: 1060px) {
+  .main-container { border-right-width: 0; border-left-width: 0; }
+}
+@media (max-width: 980px) {
+  .welcome-section { flex-direction: column; }
+  .welcome-right { width: 100%; justify-content: flex-start; }
+  .floating-login { top: 0; margin-top: 24px; }
+}
+@media (max-width: 600px) {
+  .main-container { border-right-width: 0; border-left-width: 0; border-radius: 0;}
+  .welcome-section { gap: 16px;}
+  .welcome-icon { width: 45px; height: 45px;}
+}
+
+/* Login Form */
+.login-box {
+  width: 100%;
+  border: none;
+  padding: 25px 26px 13px 26px;
+  border-radius: 14px;
+  background: none;
+  box-shadow: none;
+}
+.login-title {
+  font-size: 1.13rem;
+  color: var(--ocbc-red);
+  margin-top: 0;
+  margin-bottom: 11px;
+  font-weight: 600;
+}
+.login-box label { display: block; margin-bottom: 7px; font-weight: 600; color: var(--ocbc-red); }
+.login-box input[type=text],
+.login-box input[type=password] {
+  width: 100%;
+  padding: 7px 10px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: #fafbfc;
+}
+.login-box button {
+  background-color: var(--ocbc-red);
+  border: none;
+  padding: 11px 15px;
+  color: white;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 15px;
+  transition: background 0.3s;
+}
+.login-box button:hover { background: var(--ocbc-dark-red); }
+.link-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-top: 14px;
+  margin-bottom: 0;
+}
+.security-note { font-size: 12px; margin-top: 10px; color: #555; }
+
+/* Products: Personal Banking & Loans */
+.products-row {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.product-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 3px 18px #0002;
+  min-width: 218px;
+  max-width: 252px;
+  padding: 28px 18px 20px 18px;
+  text-align: center;
+  transition: box-shadow 0.22s, transform 0.22s;
+  position: relative;
+  top: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+.product-card:hover, .product-card:focus-within {
+  box-shadow: 0 7px 32px #d52b1e29;
+  transform: translateY(-10px) scale(1.025);
+  z-index: 2;
+}
+.product-card img {
+  height: 58px;
+  margin-bottom: 16px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.product-card h3 {
+  font-size: 1.06rem;
+  color: var(--ocbc-dark-red);
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+.product-card p { font-size: 1rem; margin: 0 0 2px 0; color: #222;}
+@media (max-width: 1020px) {
+  .products-row { flex-wrap: wrap; }
+  .product-card { min-width: 180px; max-width: 48vw;}
+}
+@media (max-width: 600px) {
+  .products-row { flex-direction: column; gap: 17px;}
+  .product-card { max-width: 100%; }
+}
+
+/* Contact Us Floating Row */
+.contact-row {
+  display: flex;
+  gap: 32px;
+  background: #f6f7fa;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px #0001;
+  padding: 30px 10px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.contact-method {
+  display: flex;
+  align-items: center;
+  min-width: 186px;
+  gap: 12px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px 22px;
+  box-shadow: 0 2px 10px #0001;
+  margin: 6px 0;
+  flex: 1 1 180px;
+}
+.contact-method img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px #0002;
+}
+.method-label {
+  font-weight: 700;
+  color: #d52b1e;
+  margin-bottom: 3px;
+  font-size: 1.06em;
+}
+.contact-method a {
+  color: #007bff;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 1rem;
+}
+/* Footer */
+footer {
+  background: #eee;
+  color: #666;
+  text-align: center;
+  padding: 18px 10px;
+  font-size: 14px;
+  user-select: none;
+}
+@media (max-width: 650px) {
+  .main-container { border-width: 0;}
+  .contact-row { padding: 18px 2vw;}
+  .contact-method { padding: 9px 6px;}
+  .welcome-section { gap: 10px;}
+}
+
